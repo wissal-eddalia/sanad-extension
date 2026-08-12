@@ -1,0 +1,113 @@
+/*
+  Design plan (see /mnt/skills/public/frontend-design):
+
+  Sanad (سند) is the classical term for the chain of transmission behind a
+  reported saying — literally "something to lean on." That's the whole
+  product in one word: a claim is only as trustworthy as the chain that
+  carries it back to a source. The signature element is a literal chain
+  rail running down the left edge of the verification chain, linking
+  Claim -> Origin -> Evidence -> Verdict -> Next step -> MIL tip.
+
+  Color: deep ink-teal ground (not black, not cream) with a burnished gold
+  "seal" accent standing in for authentication. Verdicts get their own
+  desaturated, distinct hues so scanning the panel color-codes trust level
+  at a glance.
+
+  Type: Fraunces (a display serif with real personality) for the claim
+  text and verdict — this is the thing being judged, so it gets weight.
+  IBM Plex Sans for everything functional (body, buttons, labels). IBM
+  Plex Mono for metadata (domains, source types) — a small nod to
+  citation/footnote registers.
+*/
+
+:root {
+  /* Ground */
+  --ink-950: #0e1f1c;
+  --ink-900: #142e29;
+  --ink-800: #1b3a33;
+  --ink-700: #274a41;
+  --ink-600: #3a6157;
+  --paper-50: #f4f2ec;
+  --paper-100: #eae6da;
+
+  /* Signature accent — the "seal" */
+  --gold-500: #c9a15a;
+  --gold-400: #d9b877;
+  --gold-100: #f0e3c4;
+
+  /* Verdict palette */
+  --verdict-supported: #5f9c76;
+  --verdict-supported-bg: #1c3129;
+  --verdict-refuted: #c96b5f;
+  --verdict-refuted-bg: #32211d;
+  --verdict-misleading: #d1a44a;
+  --verdict-misleading-bg: #332815;
+  --verdict-unverified: #8f97a3;
+  --verdict-unverified-bg: #24282e;
+  --verdict-context: #8d8fd6;
+  --verdict-context-bg: #262740;
+  --verdict-error: #b4645c;
+  --verdict-error-bg: #2c1e1d;
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.24), 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--ink-950);
+  color: var(--paper-50);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--gold-400);
+}
+
+::selection {
+  background: var(--gold-500);
+  color: var(--ink-950);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Respect reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-400);
+  outline-offset: 2px;
+}
