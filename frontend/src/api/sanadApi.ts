@@ -15,7 +15,7 @@ const VERIFY_ENDPOINT = `${API_BASE_URL}/api/v1/verify`;
  * "Couldn't reach Sanad" error every time, since nothing is listening at
  * localhost:8000 yet.
  */
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 const REQUEST_TIMEOUT_MS = 15000;
 
